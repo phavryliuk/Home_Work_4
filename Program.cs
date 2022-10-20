@@ -1,14 +1,60 @@
-﻿internal class Program
+﻿
+
+
+
+
+internal class Program
 {
+    enum Keys
+    {
+        BubbleSorting,
+        SelectionSorting,
+        InsertionSorting
+    }
+
     private static void Main(string[] args)
     {
-        BubbleSorting();
-        SelectionSorting();
-        InsertionSorting();
+        ////BubbleSorting();
+        ////SelectionSorting();
+        ////InsertionSorting();
+
+        
+        Console.WriteLine("Choose the method of sorting: ");
+        Console.WriteLine("Press B for bubble sorting");
+        Console.WriteLine("Press S for selection sorting");
+        Console.WriteLine("Press I for insertion sorting");
+        ConsoleKey key = Console.ReadKey().Key;
+        Console.WriteLine("You're entered " + key);
+        switch (key)
+
+        {
+            case ConsoleKey.B:
+                Console.WriteLine("Start bubble sorting");
+                var bubbleSorting = Keys.BubbleSorting;
+                BubbleSorting();
+                break;
+                Console.ReadKey();
+
+            case ConsoleKey.S:
+                Console.WriteLine("Start selection sorting");
+                var selectionSorting = Keys.SelectionSorting;
+                SelectionSorting();
+                break;
+                Console.ReadKey();
+
+            case ConsoleKey.I:
+                Console.WriteLine("Start insertion sorting");
+                var insertionSorting = Keys.InsertionSorting;
+                InsertionSorting();
+                break;
+                Console.ReadKey();
+
+        }
+
 
         int arrayValue = 0;
 
-        int[] InputArray()
+       static int[] InputArray()
         {
             Console.Write($"Enter number of values in array: \t");
 
@@ -33,11 +79,12 @@
 
             Console.WriteLine();
             Console.WriteLine($"////////////////////////////////////////");
+            
             return myArray;
         }
 
 
-        int[] BubbleSorting()
+       int[] BubbleSorting()
         {
             int[] myArray = InputArray();
 
@@ -71,7 +118,7 @@
         }
 
 
-        int[] SelectionSorting()
+        static int[] SelectionSorting()
         {
 
             int[] myArray = InputArray();
@@ -99,8 +146,8 @@
                 myArray[min] = myArray[i];
                 myArray[i] = temp;
             }
-        
-    
+
+
 
 
             for (int i = 0; i < myArray.Length; i++)
@@ -114,7 +161,7 @@
         }
 
 
-        int[] InsertionSorting()
+        static int[] InsertionSorting()
         {
 
             int[] myArray = InputArray();
@@ -151,7 +198,6 @@
             return myArray;
         }
 
-
     }
-
+    
 }
